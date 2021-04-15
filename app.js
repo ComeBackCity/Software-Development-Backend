@@ -2,6 +2,8 @@ require("dotenv").config()
 const express = require("express")
 const cors = require("cors")
 const chalk = require("chalk")
+const mongodb = require("mongodb")
+const database = require('./src/utils/database/database')
 
 const app = express()
 const port = process.env.PORT || 4000
