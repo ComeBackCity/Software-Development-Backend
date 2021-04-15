@@ -10,7 +10,10 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/', async (req, res)=>{
-    res.send("Hello Sahil!")
+    res.send({
+        to: "Sahil",
+        message: "Json testing"
+    })
 })
 
 app.listen(port, ()=> {
