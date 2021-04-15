@@ -10,10 +10,7 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/', async (req, res)=>{
-    res.send({
-        to: "Sahil",
-        message: "Json testing"
-    })
+    res.send("CSE-408 backend")
 })
 
 app.listen(port, ()=> {
