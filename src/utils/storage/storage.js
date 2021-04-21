@@ -6,10 +6,13 @@ const path = require('path')
 
 const image_max_size = 5 * 1024 * 1024
 
-const fileFilter = (req, file, cb) => {
-    const allowedTypes = ["image/jpeg", "image/jpg", "image/png"]
+const imageTypes = ["image/jpeg", "image/jpg", "image/png"]
+const docTypes = ["application/pdf"]
+const audioTypes = ["audio/basic","audio/mid","audio/mpeg","audio/mp4"]
+const videoTypes = ["video/x-flv","video/mp4"]
 
-    if(!allowedTypes.includes(file.mimetype)){
+const fileFilter = (req, file, cb) => {
+    if(!imageTypes.includes(file.mimetype)){
         const error = new Error("Only jpeg, jpg and png images are allowed.")
         error.code = "INCORRECT_FILETYPE"
 
