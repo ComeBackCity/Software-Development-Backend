@@ -5,13 +5,14 @@ const {Storage} = require('@google-cloud/storage')
 const path = require('path')
 
 const image_max_size = 5 * 1024 * 1024
+const pdf_max_size = 10 * 1024 * 1024
 
 const imageTypes = ["image/jpeg", "image/jpg", "image/png"]
 const docTypes = ["application/pdf"]
 const audioTypes = ["audio/basic","audio/mid","audio/mpeg","audio/mp4"]
 const videoTypes = ["video/x-flv","video/mp4"]
 
-const fileFilter = (req, file, cb) => {
+const fileFilterImage = (req, file, cb) => {
     if(!imageTypes.includes(file.mimetype)){
         const error = new Error("Only jpeg, jpg and png images are allowed.")
         error.code = "INCORRECT_FILETYPE"
@@ -22,11 +23,30 @@ const fileFilter = (req, file, cb) => {
     return cb(null, true)
 }
 
-const upload = multer({
+const fileFilterDocument = (req, file, cb) => {
+    if(!docTypes.includes(file.mimetype) || !imageTypes.includes(file.mimetype)){
+        const error = new Error("Only pdf is allowed.")
+        error.code = "INCORRECT_FILETYPE"
+
+        return cb(error, false)
+    }
+
+    return cb(null, true)
+}
+
+const uploadImage = multer({
     storage: multer.memoryStorage(),
-    fileFilter,
+    fileFilter : fileFilterImage,
     limits: {
         fileSize: image_max_size
+    }
+})
+
+const uploadDocument = multer({
+    storage: multer.memoryStorage(),
+    fileFilter : fileFilterDocument,
+    limits: {
+        fileSize: pdf_max_size
     }
 })
 
@@ -64,7 +84,37 @@ const uploadAnImage = async (image, dirName) => {
     }
 }
 
-router.post('/upload/image', upload.single('image'), async (req, res) => {
+
+const uploadADocument = async (document, dirName) => {
+    const name = getRandomName(document.originalname)
+    const cloudStorageFileName = dirName + "/"  + name
+    const file = bucket.file(cloudStorageFileName);
+
+    try {
+        await file.createWriteStream({resemble: false}).end(image.buffer)
+        //console.log("done")
+        return {
+            name,
+            link: baseURL + cloudStorageFileName,
+        }
+        //return cloudStorageFileName
+    }catch(e) {
+        throw new Error("Can not upload")
+    }
+}
+
+
+router.post('/upload/document', uploadDocument.single('document'), async (req, res) => {
+    try {
+        let documnet = await uploadADocument(req.file, "photos")
+        //console.log("send")
+        res.send(documnet)
+    }catch (e) {
+        res.status(400).send("Can not upload image")
+    }
+})
+
+router.post('/upload/image', uploadImage.single('image'), async (req, res) => {
     try {
         let image = await uploadAnImage(req.file, "photos")
         //console.log("send")

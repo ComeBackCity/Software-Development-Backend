@@ -41,6 +41,16 @@ const gd = mongoose.model('General Diary',{
         type: Boolean,
         required: true,
         default: false
+    },
+
+    documents: {
+        type: [String],
+        default: []
+    },
+
+    images: {
+        type: [String],
+        default: []
     }
 
 })
