@@ -3,8 +3,8 @@ const officerModel = require('../models/officer')
 const {verifyToken} = require('../utils/token/token')
 
 const officer_auth = async (req, res, next) => {
-    if(req.headers.authorization){
-        if(!req.headers.authorization.startsWith("Officer ")){
+    if (req.headers.authorization) {
+        if (!req.headers.authorization.startsWith("Officer ")) {
             return res.status(status_codes.BAD_REQUEST)
                 .json({
                     message: "Wrong format"
@@ -25,8 +25,7 @@ const officer_auth = async (req, res, next) => {
                     .json({error: "No such officer found"});
             }
         });
-    }
-    else {
+    } else {
         res.status(status_codes.UNAUTHORIZED)
             .json({
                 message: "No token sent"

@@ -1,4 +1,4 @@
-const gdModel  = require('../../models/gd')
+const gdModel = require('../../models/gd')
 const status_codes = require('../../utils/status_codes')
 
 const new_GD = async (req, res) => {
@@ -14,13 +14,12 @@ const new_GD = async (req, res) => {
         images: req.body.images
     })
 
-    if (newGD){
+    if (newGD) {
         return res.status(status_codes.SUCCESS)
             .json({
                 message: "GD documented successfully"
             })
-    }
-    else {
+    } else {
         return res.status(status_codes.INTERNAL_SERVER_ERROR)
             .json({
                 message: "Could not create GD. Something went wrong"

@@ -9,7 +9,7 @@ const login = async (req, res) => {
         password: req.body.password
     })
 
-    if(!officer) {
+    if (!officer) {
         return res.status(status_codes.DATA_NOT_FOUND).json({
             error: "Wrong credentials"
         })
@@ -17,8 +17,8 @@ const login = async (req, res) => {
 
     await officerTokenModel.deleteMany({
         officer_id: officer._id
-    }, function (error){
-        if (error){
+    }, function (error) {
+        if (error) {
             return res.status(status_codes.INTERNAL_SERVER_ERROR)
                 .json("Something went wrong")
         }
@@ -43,8 +43,7 @@ const login = async (req, res) => {
             },
             token
         })
-    }
-    else {
+    } else {
         return res.status(status.INTERNAL_SERVER_ERROR).json({
             error: "Error while processing request",
         })

@@ -9,7 +9,7 @@ const new_officer = async (req, res) => {
         password: req.body.password
     })
 
-    if(officer) {
+    if (officer) {
         return res.status(status_codes.SUCCESS).json({
             message: "Success",
             officer: {
@@ -18,8 +18,7 @@ const new_officer = async (req, res) => {
                 badge_no: officer.badge_no
             }
         })
-    }
-    else {
+    } else {
         return res.status(status_codes.INTERNAL_SERVER_ERROR).json({
             error: "Something went wrong"
         })

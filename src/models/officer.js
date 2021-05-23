@@ -1,6 +1,6 @@
 const mongoose = require('../utils/database/database')
 
-const officer = mongoose.model('Officer',{
+const officer = mongoose.model('Officer', {
     badge_no: {
         type: String,
         required: true,

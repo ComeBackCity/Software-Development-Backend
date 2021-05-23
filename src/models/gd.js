@@ -1,12 +1,12 @@
 const mongoose = require('../utils/database/database')
 
-const gd = mongoose.model('General Diary',{
+const gd = mongoose.model('General Diary', {
     topic: {
         type: String,
         required: true
     },
 
-    title:{
+    title: {
         type: String,
         required: true,
     },
