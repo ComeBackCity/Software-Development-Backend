@@ -3,8 +3,8 @@ const status_codes = require('../../utils/status_codes')
 
 const searchGD = async (req, res) => {
     let gds = []
-    if (req.body.title) {
-        const titleRegex = new RegExp('^' + req.body.title)
+    if (req.query.title) {
+        const titleRegex = new RegExp('^' + req.query.title)
         gds = await gdModel.find({
             title: {
                 $regex: titleRegex
