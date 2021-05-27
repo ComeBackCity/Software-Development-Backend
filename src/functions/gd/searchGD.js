@@ -2,6 +2,7 @@ const gdModel = require('../../models/gd')
 const status_codes = require('../../utils/status_codes')
 
 const searchGD = async (req, res) => {
+    console.log(req.query.title)
     let gds = []
     if (req.query.title) {
         const titleRegex = new RegExp('^' + req.query.title)
@@ -11,6 +12,8 @@ const searchGD = async (req, res) => {
             }
         })
     }
+
+    console.log(gds)
 
     if (gds) {
         return res.status(status_codes.SUCCESS).json({
