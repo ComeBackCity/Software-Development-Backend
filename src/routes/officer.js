@@ -9,7 +9,7 @@ const searchGD = require('../functions/gd/searchGD')
 
 const officer_auth = require('../middleware/officer_auth')
 
-router.get('/officer/login', login)
+router.post('/officer/login', login)
 router.post('/officer/new', new_officer)
 
 router.post('/officer/gd/create', officer_auth, new_gd)
