@@ -51,7 +51,7 @@ const uploadDocument = multer({
 })
 
 const storage = new Storage({
-    keyFilename: path.join(__dirname, "../../../cse408project-310914-1c65fcc04e28.json"),
+    keyFilename: path.join(__dirname, "../../../google-credentials.json"),
     projectId: 'cse408project-310914'
 });
 
@@ -73,7 +73,7 @@ const uploadAnImage = async (image, dirName) => {
 
     try {
         await file.createWriteStream({resemble: false}).end(image.buffer)
-        //console.log("done")
+        // console.log("done")
         return {
             name,
             link: baseURL + cloudStorageFileName,
@@ -117,7 +117,7 @@ router.post('/upload/document', uploadDocument.single('document'), async (req, r
 router.post('/upload/image', uploadImage.single('image'), async (req, res) => {
     try {
         let image = await uploadAnImage(req.file, "photos")
-        //console.log("send")
+        // console.log("send")
         res.send(image)
     }catch (e) {
         res.status(400).send("Can not upload image")
