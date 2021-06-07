@@ -99,28 +99,58 @@ const uploadADocument = async (document, dirName) => {
         }
         //return cloudStorageFileName
     }catch(e) {
-        throw new Error("Can not upload")
+        throw new Error("Cannot upload")
     }
 }
 
 
 router.post('/upload/document', uploadDocument.single('document'), async (req, res) => {
     try {
-        let documnet = await uploadADocument(req.file, "photos")
+        const dirName = req.body.directory
+        let documnet = await uploadADocument(req.file, dirName)
         //console.log("send")
         res.send(documnet)
     }catch (e) {
-        res.status(400).send("Can not upload image")
+        res.status(400).send("Cannot upload document")
     }
 })
 
 router.post('/upload/image', uploadImage.single('image'), async (req, res) => {
     try {
-        let image = await uploadAnImage(req.file, "photos")
+        const dirName = req.body.directory
+        let image = await uploadAnImage(req.file, dirName)
         // console.log("send")
         res.send(image)
     }catch (e) {
-        res.status(400).send("Can not upload image")
+        res.status(400).send("Cannot upload image")
+    }
+})
+
+router.post('/upload/images', uploadImage.array('images'), async (req, res) => {
+    try {
+        const dirName = req.body.directory
+        let images = []
+        for (let i=0; i<req.files.length; i++){
+            let image = await uploadAnImage(req.files[i], dirName)
+            images.push(image)
+        }
+        res.send(images)
+    }catch (e) {
+        res.status(400).send("Cannot upload images")
+    }
+})
+
+router.post('/upload/documents', uploadImage.array('documents'), async (req, res) => {
+    try {
+        const dirName = req.body.directory
+        let images = []
+        for (let i=0; i<req.files.length; i++){
+            let image = await uploadADocument(req.files[i], dirName)
+            images.push(image)
+        }
+        res.send(images)
+    }catch (e) {
+        res.status(400).send("Cannot upload documents")
     }
 })
 
