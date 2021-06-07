@@ -4,15 +4,19 @@ const cors = require("cors")
 const chalk = require("chalk")
 const mongodb = require("mongodb")
 const database = require('./src/utils/database/database')
+const bodyParser = require("body-parser");
 const storage = require('./src/utils/storage/storage')
 
 const officerRouter = require('./src/routes/officer')
+
 
 const app = express()
 const port = process.env.PORT || 4000
 
 app.use(cors())
 app.use(express.json())
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(storage)
 app.use(officerRouter)
 

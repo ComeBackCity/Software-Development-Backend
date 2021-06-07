@@ -24,7 +24,7 @@ const fileFilterImage = (req, file, cb) => {
 }
 
 const fileFilterDocument = (req, file, cb) => {
-    if(!docTypes.includes(file.mimetype) || !imageTypes.includes(file.mimetype)){
+    if(!docTypes.includes(file.mimetype)){
         const error = new Error("Only pdf is allowed.")
         error.code = "INCORRECT_FILETYPE"
 
@@ -91,7 +91,7 @@ const uploadADocument = async (document, dirName) => {
     const file = bucket.file(cloudStorageFileName);
 
     try {
-        await file.createWriteStream({resemble: false}).end(image.buffer)
+        await file.createWriteStream({resemble: false}).end(document.buffer)
         //console.log("done")
         return {
             name,
@@ -132,7 +132,7 @@ router.post('/upload/images', uploadImage.array('images'), async (req, res) => {
         let images = []
         for (let i=0; i<req.files.length; i++){
             let image = await uploadAnImage(req.files[i], dirName)
-            images.push(image)
+            images.push(image.link)
         }
         res.send(images)
     }catch (e) {
@@ -140,15 +140,15 @@ router.post('/upload/images', uploadImage.array('images'), async (req, res) => {
     }
 })
 
-router.post('/upload/documents', uploadImage.array('documents'), async (req, res) => {
+router.post('/upload/documents', uploadDocument.array('documents'), async (req, res) => {
     try {
-        const dirName = req.body.directory
-        let images = []
+        const dirName = req.body.directory || req.query.directory
+        let documents = []
         for (let i=0; i<req.files.length; i++){
-            let image = await uploadADocument(req.files[i], dirName)
-            images.push(image)
+            let document = await uploadADocument(req.files[i], dirName)
+            documents.push(document.link)
         }
-        res.send(images)
+        res.send({documents})
     }catch (e) {
         res.status(400).send("Cannot upload documents")
     }
