@@ -1,5 +1,5 @@
 const status_codes = require('../utils/status_codes')
-const officerModel = require('../models/officer')
+const officerModel = require('../models/oficers/officer')
 const {verifyToken} = require('../utils/token/token')
 
 const officer_auth = async (req, res, next) => {

@@ -1,19 +1,20 @@
-const mongoose = require('../utils/database/database')
+const mongoose = require('../../utils/database/database')
 
-const officer = mongoose.model('Officer', {
-    badge_no: {
-        type: String,
-        required: true,
-        unique: true
-    },
-
+const user = mongoose.model('User',{
     name: {
         type: String,
         required: true,
         trim: true
     },
 
-    rank: {
+    nid: {
+        type: String,
+        required: true,
+        trim: true,
+        unique: true
+    },
+
+    phone_no: {
         type: String,
         required: true,
         trim: true
@@ -25,4 +26,4 @@ const officer = mongoose.model('Officer', {
     }
 })
 
-module.exports = officer
+module.exports = user
