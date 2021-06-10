@@ -10,7 +10,7 @@ const login = async (req, res) => {
     }).populate('thana')
 
     if (!officer) {
-        return res.status(status_codes.DATA_NOT_FOUND).json({
+        return res.status(status_codes.UNAUTHORIZED).json({
             error: "Wrong credentials"
         })
     }
@@ -22,7 +22,9 @@ const login = async (req, res) => {
     }, function (error) {
         if (error) {
             return res.status(status_codes.INTERNAL_SERVER_ERROR)
-                .json("Something went wrong")
+                .json({
+                    error:"Something went wrong"
+                })
         }
     })
 
