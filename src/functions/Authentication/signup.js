@@ -28,17 +28,15 @@ const createAccount = async (req, res) => {
         nid: req.body.nid,
         phone_no: req.body.phone_no,
         password: req.body.password
-    })
-
-    if (user) {
+    }).then(r => {
         return res.status(status_codes.SUCCESS).json({
             message: "Success"
         })
-    } else {
+    }).catch(err => {
         return res.status(status_codes.INTERNAL_SERVER_ERROR).json({
-            error: "Something went wrong"
+            error: 'Something went wrong'
         })
-    }
+    })
 }
 
 module.exports = createAccount

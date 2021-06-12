@@ -9,7 +9,7 @@ const searchCase = async (req, res) => {
         if (req.query.subject) {
             subjectRegex = new RegExp('^' + req.query.subject)
         }
-        console.log(subjectRegex)
+
         queryPayload.subject = {
             $regex: subjectRegex
         }

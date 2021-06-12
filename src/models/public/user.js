@@ -17,7 +17,8 @@ const user = mongoose.model('User',{
     phone_no: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        unique: true
     },
 
     password: {
