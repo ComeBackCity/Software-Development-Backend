@@ -1,4 +1,5 @@
 const caseModel = require('../../models/cases/case')
+const officerModel = require('../../models/oficers/officer')
 const status_codes = require('../../utils/status_codes')
 
 const searchCase = async (req, res) => {
@@ -27,7 +28,13 @@ const searchCase = async (req, res) => {
     }
 
     caseModel.find(queryPayload)
+        .populate('assigned_officers')
         .then(cases => {
+           cases.map(_case => {
+               _case.assigned_officers.map(officer => {
+                   officer.password = undefined
+               })
+           })
             return res.status(status_codes.SUCCESS)
                 .json(cases)
         })

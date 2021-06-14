@@ -1,7 +1,21 @@
 const caseModel = require('../../models/cases/case')
 const status_codes = require('../../utils/status_codes')
+const mongoose = require("../../utils/database/database");
 
 const createCase = async (req, res) => {
+
+    let officers = []
+
+    for (let officer of req.body.assigned_officers){
+        if(typeof officer === 'string'){
+            officers.push(mongoose.Types.ObjectId(officer))
+        }
+        else {
+            officers.push(officer)
+        }
+    }
+
+    req.body.assigned_officers = officers
 
     let newCase = caseModel.create({
         subject: req.body.subject,

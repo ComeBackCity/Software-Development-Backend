@@ -1,4 +1,5 @@
 const database = require('../../utils/database/database')
+const {Schema} = require("mongoose");
 
 const cases = database.model('Case',{
     subject: {
@@ -13,7 +14,8 @@ const cases = database.model('Case',{
 
     assigned_officers: {
         type: [{
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Officer'
         }],
         required: true,
         validate: [(val) => {
