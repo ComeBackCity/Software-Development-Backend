@@ -11,6 +11,7 @@ const searchFIR = require('../functions/fir/searchFIR')
 const new_case = require('../functions/cases/createCase')
 const searchCase = require('../functions/cases/searchCase')
 // const updateCase = require('../functions/cases/updateCase')
+const caseByID = require('../functions/cases/caseByID')
 const officer_auth = require('../middleware/officer_auth')
 
 
@@ -31,5 +32,6 @@ router.get('/officer/fir/search', officer_auth, searchFIR)
 router.post('/officer/case/create', new_case)
 router.get('/officer/case/search', searchCase)
 // router.post('/officer/case/update', updateCase)
+router.get('/officer/case/byID', caseByID)
 
 module.exports = router

@@ -1,5 +1,4 @@
 const caseModel = require('../../models/cases/case')
-const officerModel = require('../../models/oficers/officer')
 const status_codes = require('../../utils/status_codes')
 
 const searchCase = async (req, res) => {
