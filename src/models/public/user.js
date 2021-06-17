@@ -1,6 +1,6 @@
-const mongoose = require('../../utils/database/database')
+const database = require('../../utils/database/database')
 
-const user = mongoose.model('User',{
+const user = database.model('User',{
     name: {
         type: String,
         required: true,

@@ -1,8 +1,7 @@
-const mongoose = require('../../utils/database/database')
-const thanaModel = require('../misc/thana')
+const database = require('../../utils/database/database')
 const {Schema} = require("mongoose");
 
-const officer = mongoose.model('Officer', {
+const officer = database.model('Officer', {
     badge_no: {
         type: String,
         required: true,

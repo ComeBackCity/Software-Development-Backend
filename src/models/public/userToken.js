@@ -1,6 +1,6 @@
-const mongoose = require('../../utils/database/database')
+const database = require('../../utils/database/database')
 
-const userToken = mongoose.model('User Token',{
+const userToken = database.model('User Token',{
     user_nid: {
         type: String,
         required: true,

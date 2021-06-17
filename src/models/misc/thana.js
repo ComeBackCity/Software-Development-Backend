@@ -1,6 +1,6 @@
-const mongoose = require('../../utils/database/database')
+const database = require('../../utils/database/database')
 
-const thana = mongoose.model('Thana',{
+const thana = database.model('Thana',{
     division: {
         type: String,
         required: true

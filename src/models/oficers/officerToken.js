@@ -1,7 +1,7 @@
-const mongoose = require('../../utils/database/database')
+const database = require('../../utils/database/database')
 const {Schema} = require("mongoose");
 
-const officerToken = mongoose.model('officerToken', {
+const officerToken = database.model('officerToken', {
     officer_id: {
         type: Schema.Types.ObjectId,
         required: true,
