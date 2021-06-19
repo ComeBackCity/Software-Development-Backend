@@ -1,161 +1,171 @@
-const database = require('../../utils/database/database')
-const {Schema} = require("mongoose");
+const database = require('../../utils/database/database');
+const { Schema } = require('mongoose');
 
-const cases = database.model('Case',{
-    subject: {
-        type: String,
-        required: true
-    },
+const cases = database.model('Case', {
+	subject: {
+		type: String,
+		required: true
+	},
 
-    type: {
-        type: String,
-        required: true
-    },
+	type: {
+		type: String,
+		required: true
+	},
 
-    assigned_officers: {
-        type: [{
-            type: Schema.Types.ObjectId,
-            ref: 'Officer'
-        }],
-        required: true,
-        validate: [(val) => {
-            return val.length > 0
-        }, 'Minimum 1 officer is required']
-    },
+	assigned_officers: {
+		type: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Officer'
+			}
+		],
+		required: true,
+		validate: [
+			val => {
+				return val.length > 0;
+			},
+			'Minimum 1 officer is required'
+		]
+	},
 
-    status: {
-        type: String,
-        required: true,
-        enum: [
-            'on hold',
-            'investigating',
-            'in court',
-            'closed'
-        ]
-    },
+	status: {
+		type: String,
+		required: true,
+		enum: ['on hold', 'investigating', 'in court', 'closed']
+	},
 
-    for: {
-        type: [{
-            name: {
-                type: String,
-                required: true
-            },
+	for: {
+		type: [
+			{
+				name: {
+					type: String,
+					required: true
+				},
 
-            address: {
-                type: String,
-                required: true
-            },
+				address: {
+					type: String,
+					required: true
+				},
 
-            phone_no: {
-                type: String,
-                required: true,
-                validate: {
-                    validator: function (v){
-                        return /((0088)|(\+88))?[0-9]{11}/.test(v)
-                    },
+				phone_no: {
+					type: String,
+					required: true,
+					validate: {
+						validator: function (v) {
+							return /((0088)|(\+88))?[0-9]{11}/.test(v);
+						},
 
-                    message: props => `${props.value} is invalid nid format`
-                }
-            },
+						message: props => `${props.value} is invalid nid format`
+					}
+				},
 
-            nid: {
-                type: String,
-                required: true,
-                validate: {
-                    validator: function (v){
-                        return /([0-9]{10})/.test(v)
-                    },
+				nid: {
+					type: String,
+					required: true,
+					validate: {
+						validator: function (v) {
+							return /([0-9]{10})/.test(v);
+						},
 
-                    message: props => `${props.value} is invalid nid format`
-                }
-            },
+						message: props => `${props.value} is invalid nid format`
+					}
+				},
 
-            father_name: {
-                type: String,
-                required: true
-            }
+				father_name: {
+					type: String,
+					required: true
+				}
+			}
+		],
 
-        }],
+		required: true,
 
-        required: true,
+		validate: [
+			val => {
+				return val.length > 0;
+			},
+			'Minimum length is 1'
+		]
+	},
 
-        validate: [(val) => {
-            return val.length > 0
-        }, 'Minimum length is 1']
-    },
+	against: {
+		type: [
+			{
+				name: {
+					type: String,
+					required: true
+				},
 
-    against: {
-        type: [{
-            name: {
-                type: String,
-                required: true
-            },
+				address: {
+					type: String,
+					required: true
+				},
 
-            address: {
-                type: String,
-                required: true
-            },
+				phone_no: {
+					type: String,
+					required: true,
+					validate: {
+						validator: function (v) {
+							return /((0088)|(\+88))?[0-9]{11}/.test(v);
+						},
 
-            phone_no: {
-                type: String,
-                required: true,
-                validate: {
-                    validator: function (v){
-                        return /((0088)|(\+88))?[0-9]{11}/.test(v)
-                    },
+						message: props => `${props.value} is invalid nid format`
+					}
+				},
 
-                    message: props => `${props.value} is invalid nid format`
-                }
-            },
+				nid: {
+					type: String,
+					required: true,
+					validate: {
+						validator: function (v) {
+							return /([0-9]{10})/.test(v);
+						},
 
-            nid: {
-                type: String,
-                required: true,
-                validate: {
-                    validator: function (v){
-                        return /([0-9]{10})/.test(v)
-                    },
+						message: props => `${props.value} is invalid nid format`
+					}
+				},
 
-                    message: props => `${props.value} is invalid nid format`
-                }
-            },
+				father_name: {
+					type: String,
+					required: true
+				}
+			}
+		],
 
-            father_name: {
-                type: String,
-                required: true
-            }
+		required: true,
 
-        }],
+		validate: [
+			val => {
+				return val.length > 0;
+			},
+			'Minimum length is 1'
+		]
+	},
 
-        required: true,
+	date: {
+		type: Date,
+		required: true,
+		default: Date.now
+	},
 
-        validate: [(val) => {
-            return val.length > 0
-        }, 'Minimum length is 1']
-    },
+	verdict: {
+		type: String
+	},
 
-    date: {
-        type: Date,
-        required: true,
-        default: Date.now
-    },
+	closed_date: {
+		type: String
+	},
 
-    verdict: {
-        type: String,
-    },
+	description: {
+		type: String,
+		required: true
+	},
 
-    closed_date: {
-        type: String
-    },
+	documents: [
+		{
+			type: String
+		}
+	]
+});
 
-    description: {
-        type: String,
-        required: true
-    },
-
-    documents: [{
-        type: String
-    }]
-})
-
-module.exports = cases
+module.exports = cases;

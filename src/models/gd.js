@@ -1,58 +1,57 @@
-const mongoose = require('../utils/database/database')
+const mongoose = require('../utils/database/database');
 
 const gd = mongoose.model('General Diary', {
-    topic: {
-        type: String,
-        required: true
-    },
+	topic: {
+		type: String,
+		required: true
+	},
 
-    title: {
-        type: String,
-        required: true,
-    },
+	title: {
+		type: String,
+		required: true
+	},
 
-    description: {
-        type: String,
-        required: true
-    },
+	description: {
+		type: String,
+		required: true
+	},
 
-    reportedBy: {
-        type: String,
-        required: true
-    },
+	reportedBy: {
+		type: String,
+		required: true
+	},
 
-    reportedFor: {
-        type: String,
-        required: true
-    },
+	reportedFor: {
+		type: String,
+		required: true
+	},
 
-    date: {
-        type: Date,
-        required: true,
-        default: Date.now
-    },
+	date: {
+		type: Date,
+		required: true,
+		default: Date.now
+	},
 
-    recordedBy: {
-        type: String,
-        required: true
-    },
+	recordedBy: {
+		type: String,
+		required: true
+	},
 
-    resolved: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
+	resolved: {
+		type: Boolean,
+		required: true,
+		default: false
+	},
 
-    documents: {
-        type: [String],
-        default: []
-    },
+	documents: {
+		type: [String],
+		default: []
+	},
 
-    images: {
-        type: [String],
-        default: []
-    }
+	images: {
+		type: [String],
+		default: []
+	}
+});
 
-})
-
-module.exports = gd
+module.exports = gd;
