@@ -14,6 +14,7 @@ const searchCase = require('../functions/cases/searchCase');
 const caseByID = require('../functions/cases/caseByID');
 const officer_auth = require('../middleware/officer_auth');
 const createTask = require('../functions/tasks/create');
+const searchTask = require('../functions/tasks/search');
 
 //routes
 router.post('/officer/login', login);
@@ -36,5 +37,6 @@ router.get('/officer/case/byID', caseByID);
 
 //task
 router.post('/officer/tasks/create', createTask);
+router.get('/officer/tasks/search', searchTask);
 
 module.exports = router;
