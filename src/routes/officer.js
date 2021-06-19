@@ -18,7 +18,7 @@ const createTask = require('../functions/tasks/create');
 //routes
 router.post('/officer/login', login);
 router.post('/officer/new', new_officer);
-router.get('/officer/get/all', getOfficersList);
+router.post('/officer/get/all', getOfficersList);
 
 //gd
 router.post('/officer/gd/create', officer_auth, new_gd);

@@ -3,7 +3,11 @@ const status_codes = require('../../utils/status_codes');
 
 const getOfficerList = async (req, res) => {
 	await officerModel
-		.find()
+		.find({
+			_id: {
+				$nin: req.body.exclude
+			}
+		})
 		.then(officers => {
 			officers.map(officer => {
 				officer.password = undefined;
