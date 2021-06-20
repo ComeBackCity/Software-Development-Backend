@@ -15,6 +15,7 @@ const caseByID = require('../functions/cases/caseByID');
 const officer_auth = require('../middleware/officer_auth');
 const createTask = require('../functions/tasks/create');
 const searchTask = require('../functions/tasks/search');
+const updateTask = require('../functions/tasks/update');
 
 //routes
 router.post('/officer/login', login);
@@ -38,5 +39,6 @@ router.get('/officer/case/byID', caseByID);
 //task
 router.post('/officer/tasks/create', createTask);
 router.get('/officer/tasks/search', searchTask);
+router.patch('/officer/tasks/update', updateTask);
 
 module.exports = router;

@@ -43,6 +43,11 @@ const task = database.model('Task', {
 		required: true,
 		enum: ['completed', 'not started yet', 'finished'],
 		default: 'not started yet'
+	},
+
+	additional_info: {
+		type: String,
+		default: null
 	}
 });
 
