@@ -1,4 +1,4 @@
-const gdModel = require('../../models/gd');
+const gdModel = require('../../models/gd/gd');
 const status_codes = require('../../utils/status_codes');
 
 const searchGD = async (req, res) => {

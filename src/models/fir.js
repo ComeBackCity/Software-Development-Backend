@@ -1,6 +1,6 @@
-const mongoose = require('../utils/database/database');
+const database = require('../utils/database/database');
 
-const fir = mongoose.model('First Information Report', {
+const fir = database.model('First Information Report', {
 	topic: {
 		type: String,
 		required: true
