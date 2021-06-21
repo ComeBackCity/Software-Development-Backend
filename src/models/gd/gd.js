@@ -1,4 +1,5 @@
 const database = require('../../utils/database/database');
+const { Schema } = require('mongoose');
 
 const gd = database.model('General Diary', {
 	topic: {
@@ -110,6 +111,11 @@ const gd = database.model('General Diary', {
 			},
 			'Minimum length is 1'
 		]
+	},
+
+	thana: {
+		type: Schema.Types.ObjectId,
+		ref: 'Thana'
 	},
 
 	date: {
