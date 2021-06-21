@@ -46,8 +46,8 @@ const task = database.model('Task', {
 	},
 
 	additional_info: {
-		type: String,
-		default: null
+		type: [String],
+		default: []
 	}
 });
 
