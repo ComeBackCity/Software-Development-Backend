@@ -57,6 +57,11 @@ const gd = database.model('General Diary', {
 				father_name: {
 					type: String,
 					required: true
+				},
+
+				date_of_birth: {
+					type: Date,
+					required: true
 				}
 			}
 		],
