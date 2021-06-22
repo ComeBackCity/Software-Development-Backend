@@ -107,10 +107,9 @@ const uploadADocument = async (document, dirName) => {
 
 router.post('/upload/document', uploadDocument.single('document'), async (req, res) => {
 	try {
-		const dirName = req.body.directory;
-		let documnet = await uploadADocument(req.file, dirName);
-		//console.log("send")
-		res.send(documnet);
+		const dirName = req.query.directory;
+		let document = await uploadADocument(req.file, dirName);
+		res.send(document);
 	} catch (e) {
 		res.status(400).send('Cannot upload document');
 	}
@@ -118,10 +117,8 @@ router.post('/upload/document', uploadDocument.single('document'), async (req, r
 
 router.post('/upload/image', uploadImage.single('image'), async (req, res) => {
 	try {
-		const dirName = req.body.directory || req.query.directory;
-		console.log(dirName);
+		const dirName = req.query.directory;
 		let image = await uploadAnImage(req.file, dirName);
-		// console.log("send")
 		res.send(image);
 	} catch (e) {
 		res.status(400).send('Cannot upload image');
