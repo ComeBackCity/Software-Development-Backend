@@ -4,7 +4,6 @@ const router = new express.Router();
 const login = require('../functions/officer/login');
 const new_officer = require('../functions/officer/new_officer');
 const getOfficersList = require('../functions/officer/officerList');
-const getThana = require('../functions/misc/findThana');
 const new_gd = require('../functions/gd/createGD');
 const searchGD = require('../functions/gd/searchGD');
 const new_fir = require('../functions/fir/createFIR');
@@ -23,9 +22,6 @@ const updateTask = require('../functions/tasks/update');
 router.post('/officer/login', login);
 router.post('/officer/new', new_officer);
 router.post('/officer/get/all', getOfficersList);
-
-//misc
-router.get('/thana/get', getThana);
 
 //gd
 router.post('/officer/gd/create', officer_auth, new_gd);

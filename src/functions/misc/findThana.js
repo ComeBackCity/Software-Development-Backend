@@ -3,7 +3,7 @@ const status_codes = require('../../utils/status_codes');
 
 const findThana = async (req, res) => {
 	await thanaModel
-		.find(req.body)
+		.findOne(req.body)
 		.then(r => {
 			res.status(status_codes.SUCCESS).json(r);
 		})
