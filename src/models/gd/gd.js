@@ -50,7 +50,7 @@ const gd = database.model('General Diary', {
 							return /([0-9]{10})/.test(v);
 						},
 
-						message: props => `${props.value} is invalid nid format`
+						message: props => `${props.value} is invalid phone number format`
 					}
 				},
 
@@ -92,7 +92,7 @@ const gd = database.model('General Diary', {
 							return /((0088)|(\+88))?[0-9]{11}/.test(v);
 						},
 
-						message: props => `${props.value} is invalid nid format`
+						message: props => `${props.value} is invalid phone number format`
 					}
 				},
 
