@@ -131,7 +131,7 @@ const gd = database.model('General Diary', {
 	},
 
 	primary_document: {
-		type: String,
+		type: [String],
 		required: true
 	},
 
