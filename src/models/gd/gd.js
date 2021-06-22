@@ -130,7 +130,7 @@ const gd = database.model('General Diary', {
 		default: false
 	},
 
-	primary_document: {
+	primary_documents: {
 		type: [String],
 		required: true
 	},
