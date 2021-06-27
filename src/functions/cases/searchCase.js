@@ -25,6 +25,18 @@ const searchCase = async (req, res) => {
 		};
 	}
 
+	if (req.query.status){
+		queryPayload.status = {
+			$in: req.query.status
+		}
+	}
+
+	if (req.query.date){
+		queryPayload.date = {
+			$gte: req.query.date
+		}
+	}
+
 	caseModel
 		.find(queryPayload)
 		.populate('assigned_officers')
