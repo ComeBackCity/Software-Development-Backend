@@ -8,6 +8,17 @@ const officerToken = database.model('officerToken', {
 		unique: true
 	},
 
+	rank: {
+		type: String,
+		required: true,
+		trim: true
+	},
+
+	thana: {
+		type: Schema.Types.ObjectId,
+		ref: 'Thana'
+	},
+
 	time: {
 		type: Date,
 		required: true,

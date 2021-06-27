@@ -34,6 +34,8 @@ const login = async (req, res) => {
 
 	const payload = {
 		officer_id: officer._id,
+		rank: officer.rank,
+		thana: officer.thana._id,
 		time: new Date()
 	};
 
