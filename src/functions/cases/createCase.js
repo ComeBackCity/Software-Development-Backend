@@ -5,7 +5,7 @@ const mongoose = require('../../utils/database/database');
 const createCase = async (req, res) => {
 	let officers = [];
 
-	for (let officer of req.body.assigned_officers) {
+	for (let officer in req.body.assigned_officers) {
 		if (typeof officer === 'string') {
 			officers.push(mongoose.Types.ObjectId(officer));
 		} else {
@@ -15,7 +15,7 @@ const createCase = async (req, res) => {
 
 	req.body.assigned_officers = officers;
 
-	let newCase = caseModel
+	caseModel
 		.create({
 			subject: req.body.subject,
 			type: req.body.type,

@@ -18,13 +18,6 @@ const cases = database.model('Case', {
 				type: Schema.Types.ObjectId,
 				ref: 'Officer'
 			}
-		],
-		required: true,
-		validate: [
-			val => {
-				return val.length > 0;
-			},
-			'Minimum 1 officer is required'
 		]
 	},
 
@@ -154,6 +147,11 @@ const cases = database.model('Case', {
 
 	closed_date: {
 		type: String
+	},
+
+	thana: {
+		type: Schema.Types.ObjectId,
+		ref: 'Thana'
 	},
 
 	description: {

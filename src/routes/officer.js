@@ -21,7 +21,7 @@ const updateTask = require('../functions/tasks/update');
 //routes
 router.post('/officer/login', login);
 router.post('/officer/new', new_officer);
-router.post('/officer/get/all', getOfficersList);
+router.post('/officer/get/all', officer_auth, getOfficersList);
 
 //gd
 router.post('/officer/gd/create', officer_auth, new_gd);
@@ -32,10 +32,10 @@ router.post('/officer/fir/create', officer_auth, new_fir);
 router.get('/officer/fir/search', officer_auth, searchFIR);
 
 //cases
-router.post('/officer/case/create', new_case);
-router.get('/officer/case/search', searchCase);
+router.post('/officer/case/create', officer_auth, new_case);
+router.get('/officer/case/search', officer_auth, searchCase);
 // router.post('/officer/case/update', updateCase)
-router.get('/officer/case/byID', caseByID);
+router.get('/officer/case/byID', officer_auth, caseByID);
 
 //task
 router.post('/officer/tasks/create', createTask);

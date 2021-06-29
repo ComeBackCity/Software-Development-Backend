@@ -17,7 +17,8 @@ const officer = database.model('Officer', {
 	rank: {
 		type: String,
 		required: true,
-		trim: true
+		trim: true,
+		enum: ['Officer in Charge', 'Sub-Inspector', 'Assistant Sub-Inspector', 'Constable']
 	},
 
 	thana: {

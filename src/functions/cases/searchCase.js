@@ -4,6 +4,18 @@ const status_codes = require('../../utils/status_codes');
 const searchCase = async (req, res) => {
 	let queryPayload = {};
 
+	if (req.officer.rank === 'Officer in Charge') {
+		if (req.query.assigned_officers) {
+			queryPayload.assigned_officers = {
+				$in: req.query.assigned_officers
+			};
+		}
+	} else {
+		queryPayload.assigned_officers = {
+			$in: req.officer._id
+		};
+	}
+
 	if (req.query.subject) {
 		let subjectRegex = new RegExp('.*?');
 		if (req.query.subject) {
@@ -19,22 +31,16 @@ const searchCase = async (req, res) => {
 		queryPayload.type = req.query.type;
 	}
 
-	if (req.query.assigned_officers) {
-		queryPayload.assigned_officers = {
-			$in: req.query.assigned_officers
+	if (req.query.status) {
+		queryPayload.status = {
+			$in: req.query.status
 		};
 	}
 
-	if (req.query.status){
-		queryPayload.status = {
-			$in: req.query.status
-		}
-	}
-
-	if (req.query.date){
+	if (req.query.date) {
 		queryPayload.date = {
 			$gte: req.query.date
-		}
+		};
 	}
 
 	caseModel
