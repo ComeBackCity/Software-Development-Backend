@@ -37,9 +37,10 @@ const searchCase = async (req, res) => {
 		};
 	}
 
-	if (req.query.date) {
+	if (req.query.startDate) {
 		queryPayload.date = {
-			$gte: req.query.date
+			$gte: req.query.startDate,
+			$lte: req.query.endDate
 		};
 	}
 

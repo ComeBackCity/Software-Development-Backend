@@ -6,6 +6,7 @@ const new_officer = require('../functions/officer/new_officer');
 const getOfficersList = require('../functions/officer/officerList');
 const new_gd = require('../functions/gd/createGD');
 const searchGD = require('../functions/gd/searchGD');
+const gdByID = require('../functions/gd/gdByID');
 const new_fir = require('../functions/fir/createFIR');
 const searchFIR = require('../functions/fir/searchFIR');
 const new_case = require('../functions/cases/createCase');
@@ -26,6 +27,7 @@ router.post('/officer/get/all', officer_auth, getOfficersList);
 //gd
 router.post('/officer/gd/create', officer_auth, new_gd);
 router.get('/officer/gd/search', officer_auth, searchGD);
+router.get('/officer/gd/byID', officer_auth, gdByID);
 
 //fir
 router.post('/officer/fir/create', officer_auth, new_fir);

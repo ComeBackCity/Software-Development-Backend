@@ -118,6 +118,15 @@ const gd = database.model('General Diary', {
 		]
 	},
 
+	assigned_officers: {
+		type: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Officer'
+			}
+		]
+	},
+
 	thana: {
 		type: Schema.Types.ObjectId,
 		ref: 'Thana'
