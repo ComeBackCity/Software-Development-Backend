@@ -37,6 +37,7 @@ router.get('/officer/fir/search', officer_auth, searchFIR);
 router.post('/officer/case/create', officer_auth, new_case);
 router.get('/officer/case/search', officer_auth, searchCase);
 // router.post('/officer/case/update', updateCase)
+//////
 router.get('/officer/case/byID', officer_auth, caseByID);
 
 //task
