@@ -4,7 +4,7 @@ const status_codes = require('../../utils/status_codes');
 const caseByID = async (req, res) => {
 	caseModel
 		.findById(req.query._id)
-		.populate('assigned_officers')
+		.populate('assigned_officers.officer')
 		.then(r => {
 			let hasAccess = false;
 
