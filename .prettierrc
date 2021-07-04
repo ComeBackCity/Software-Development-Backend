@@ -4,7 +4,7 @@
 	"trailingComma": "none",
 	"useTabs": true,
 	"bracketSpacing": true,
-	"tabWidth": 4,
+	"tabWidth": 2,
 	"arrowParens": "avoid",
 	"no-multiple-empty-lines": [2, { "max": 1, "maxBOF": 0 }],
 	"overrides": [
