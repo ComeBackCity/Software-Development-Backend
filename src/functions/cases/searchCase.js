@@ -6,12 +6,12 @@ const searchCase = async (req, res) => {
 
 	if (req.officer.rank === 'Officer in Charge') {
 		if (req.query.assigned_officers) {
-			queryPayload.assigned_officers = {
+			queryPayload['assigned_officers.id'] = {
 				$in: req.query.assigned_officers
 			};
 		}
 	} else {
-		queryPayload.assigned_officers = {
+		queryPayload['assigned_officers.id'] = {
 			$in: req.officer._id
 		};
 	}

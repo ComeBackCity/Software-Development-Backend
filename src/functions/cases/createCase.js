@@ -5,12 +5,11 @@ const mongoose = require('../../utils/database/database');
 const createCase = async (req, res) => {
 	let officers = [];
 
-	for (let officer in req.body.assigned_officers) {
-		if (typeof officer === 'string') {
-			officers.push(mongoose.Types.ObjectId(officer));
-		} else {
-			officers.push(officer);
+	for (let officer of req.body.assigned_officers) {
+		if (typeof officer.id === 'string') {
+			officer.id = mongoose.Types.ObjectId(officer.id);
 		}
+		officers.push(officer);
 	}
 
 	req.body.assigned_officers = officers;

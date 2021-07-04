@@ -11,8 +11,8 @@ const caseByID = async (req, res) => {
 			if (req.officer.rank === 'Officer in Charge') {
 				hasAccess = true;
 			} else {
-				for (let officer in req.assigned_officers) {
-					if (officer._id === req.officer._id) {
+				for (let officer of r.assigned_officers) {
+					if (officer.id.toString() === req.officer._id.toString()) {
 						hasAccess = true;
 					}
 				}

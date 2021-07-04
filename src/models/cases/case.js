@@ -15,8 +15,24 @@ const cases = database.model('Case', {
 	assigned_officers: {
 		type: [
 			{
-				type: Schema.Types.ObjectId,
-				ref: 'Officer'
+				id: {
+					type: Schema.Types.ObjectId,
+					required: true,
+					ref: 'Officer'
+				},
+
+				from: {
+					type: Date,
+					required: true,
+					default: Date.now()
+				},
+
+				to: {
+					type: Date,
+					required: false
+				},
+
+				_id: false
 			}
 		]
 	},
