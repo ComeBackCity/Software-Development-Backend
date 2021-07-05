@@ -6,12 +6,12 @@ const searchGD = async (req, res) => {
 
 	if (req.officer.rank === 'Officer in Charge') {
 		if (req.query.assigned_officers) {
-			queryPayload.assigned_officers = {
+			queryPayload['assigned_officers.id'] = {
 				$in: req.query.assigned_officers
 			};
 		}
 	} else {
-		queryPayload.assigned_officers = {
+		queryPayload['assigned_officers.id'] = {
 			$in: req.officer._id
 		};
 	}
@@ -40,7 +40,8 @@ const searchGD = async (req, res) => {
 
 	gdModel
 		.find(queryPayload)
-		.populate('assigned_officers')
+		.populate('assigned_officers.officer')
+		.populate('thana')
 		.then(cases => {
 			cases.map(_case => {
 				_case.assigned_officers.map(officer => {

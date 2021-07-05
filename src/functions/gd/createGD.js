@@ -1,7 +1,19 @@
+const mongoose = require('mongoose');
 const gdModel = require('../../models/gd/gd');
 const status_codes = require('../../utils/status_codes');
 
 const new_GD = async (req, res) => {
+	let officers = [];
+
+	for (let officer of req.body.assigned_officers) {
+		if (typeof officer.id === 'string') {
+			officer.id = mongoose.Types.ObjectId(officer.id);
+		}
+		officers.push(officer);
+	}
+
+	req.body.assigned_officers = officers;
+
 	await gdModel
 		.create({
 			topic: req.body.topic,
@@ -10,7 +22,8 @@ const new_GD = async (req, res) => {
 			for: req.body.for,
 			against: req.body.against,
 			date: req.body.date,
-			primary_document: req.body.primary_document,
+			thana: req.body.thana,
+			primary_documents: req.body.primary_documents,
 			optional_documents: req.body.optional_documents
 		})
 		.then(r => {
@@ -20,7 +33,7 @@ const new_GD = async (req, res) => {
 		})
 		.catch(err => {
 			return res.status(status_codes.INTERNAL_SERVER_ERROR).json({
-				message: 'Could not create GD. Something went wrong'
+				message: err.message
 			});
 		});
 };

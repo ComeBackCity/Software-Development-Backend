@@ -4,7 +4,8 @@ const status_codes = require('../../utils/status_codes');
 const gdByID = async (req, res) => {
 	gdModel
 		.findById(req.query._id)
-		.populate('assigned_officers')
+		.populate('assigned_officers.officer')
+		.populate('thana')
 		.then(r => {
 			let hasAccess = false;
 
