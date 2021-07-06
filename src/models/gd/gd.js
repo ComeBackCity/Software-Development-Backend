@@ -52,7 +52,7 @@ const gdSchema = new mongoose.Schema(
 								return /([0-9]{10})/.test(v);
 							},
 
-							message: props => `${props.value} is invalid phone number format`
+							message: props => `${props.value} is invalid nid format`
 						}
 					},
 
