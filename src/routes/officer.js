@@ -13,6 +13,7 @@ const searchFIR = require('../functions/fir/searchFIR');
 const new_case = require('../functions/cases/createCase');
 const searchCase = require('../functions/cases/searchCase');
 const assignOfficerCase = require('../functions/cases/assignOfficer');
+const updateCase = require('../functions/cases/updateCase');
 const caseByID = require('../functions/cases/caseByID');
 const officer_auth = require('../middleware/officer_auth');
 const createTask = require('../functions/tasks/create');
@@ -41,6 +42,7 @@ router.post('/officer/case/create', officer_auth, new_case);
 router.get('/officer/case/search', officer_auth, searchCase);
 router.post('/officer/case/assign', officer_auth, assignOfficerCase);
 router.get('/officer/case/byID', officer_auth, caseByID);
+router.post('/officer/case/update', officer_auth, updateCase);
 
 //task
 router.post('/officer/tasks/create', createTask);

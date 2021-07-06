@@ -180,7 +180,35 @@ const caseSchema = new mongoose.Schema(
 			{
 				type: String
 			}
-		]
+		],
+
+		links: {
+			type: [
+				{
+					documentType: {
+						type: String,
+						required: true
+					},
+
+					id: {
+						type: mongoose.Schema.Types.ObjectId,
+						required: true
+					},
+
+					recordedBy: {
+						type: mongoose.Schema.Types.ObjectId,
+						required: true,
+						ref: 'Officer'
+					},
+
+					recordedOn: {
+						type: Date,
+						required: true,
+						default: Date.now
+					}
+				}
+			]
+		}
 	},
 	{
 		toJSON: {

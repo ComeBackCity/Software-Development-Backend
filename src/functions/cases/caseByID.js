@@ -5,6 +5,12 @@ const caseByID = async (req, res) => {
 	caseModel
 		.findById(req.query._id)
 		.populate('assigned_officers.officer')
+		.populate({
+			path: 'links',
+			populate: {
+				path: 'recordedBy'
+			}
+		})
 		.then(r => {
 			let hasAccess = false;
 
