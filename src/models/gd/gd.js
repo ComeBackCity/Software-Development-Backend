@@ -155,10 +155,11 @@ const gdSchema = new mongoose.Schema(
 			default: Date.now
 		},
 
-		resolved: {
-			type: Boolean,
+		status: {
+			type: String,
 			required: true,
-			default: false
+			enum: ['unresolved', 'resolved', 'escalated'],
+			default: 'unresolved'
 		},
 
 		primary_documents: {
