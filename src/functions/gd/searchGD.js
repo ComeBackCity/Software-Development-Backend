@@ -38,6 +38,12 @@ const searchGD = async (req, res) => {
 		};
 	}
 
+	if (req.query.status) {
+		queryPayload.status = {
+			$in: req.query.status
+		};
+	}
+
 	gdModel
 		.find(queryPayload)
 		.populate('assigned_officers.officer')
