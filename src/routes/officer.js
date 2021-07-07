@@ -8,6 +8,7 @@ const new_gd = require('../functions/gd/createGD');
 const searchGD = require('../functions/gd/searchGD');
 const gdByID = require('../functions/gd/gdByID');
 const assignOfficerGd = require('../functions/gd/assignOfficer');
+const updateGD = require('../functions/gd/updateGD');
 const new_fir = require('../functions/fir/createFIR');
 const searchFIR = require('../functions/fir/searchFIR');
 const new_case = require('../functions/cases/createCase');
@@ -32,6 +33,7 @@ router.post('/officer/gd/create', officer_auth, new_gd);
 router.get('/officer/gd/search', officer_auth, searchGD);
 router.get('/officer/gd/byID', officer_auth, gdByID);
 router.post('/officer/gd/assign', officer_auth, assignOfficerGd);
+router.post('/officer/gd/update', officer_auth, updateGD);
 
 //fir
 router.post('/officer/fir/create', officer_auth, new_fir);
