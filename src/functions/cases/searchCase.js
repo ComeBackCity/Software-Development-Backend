@@ -47,6 +47,7 @@ const searchCase = async (req, res) => {
 	caseModel
 		.find(queryPayload)
 		.populate('assigned_officers.officer')
+		.populate('thana')
 		.then(cases => {
 			cases.map(_case => {
 				_case.assigned_officers.map(officer => {

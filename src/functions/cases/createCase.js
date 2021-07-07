@@ -15,19 +15,7 @@ const createCase = async (req, res) => {
 	req.body.assigned_officers = officers;
 
 	caseModel
-		.create({
-			subject: req.body.subject,
-			type: req.body.type,
-			assigned_officers: req.body.assigned_officers,
-			status: req.body.status,
-			for: req.body.for,
-			against: req.body.against,
-			date: req.body.date,
-			verdict: null,
-			closed_date: null,
-			description: req.body.description,
-			documents: []
-		})
+		.create(req.body)
 		.then(r => {
 			return res.status(status_codes.SUCCESS).json({
 				message: 'Case documented successfully'

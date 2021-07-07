@@ -6,6 +6,12 @@ const gdByID = async (req, res) => {
 		.findById(req.query._id)
 		.populate('assigned_officers.officer')
 		.populate('thana')
+		.populate({
+			path: 'links',
+			populate: {
+				path: 'recordedBy'
+			}
+		})
 		.then(r => {
 			let hasAccess = false;
 

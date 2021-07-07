@@ -5,6 +5,7 @@ const caseByID = async (req, res) => {
 	caseModel
 		.findById(req.query._id)
 		.populate('assigned_officers.officer')
+		.populate('thana')
 		.populate({
 			path: 'links',
 			populate: {

@@ -158,7 +158,7 @@ const gdSchema = new mongoose.Schema(
 		status: {
 			type: String,
 			required: true,
-			enum: ['unresolved', 'resolved', 'escalated'],
+			enum: ['unresolved', 'investigating', 'resolved', 'escalated'],
 			default: 'unresolved'
 		},
 
@@ -170,6 +170,34 @@ const gdSchema = new mongoose.Schema(
 		optional_documents: {
 			type: [String],
 			default: []
+		},
+
+		links: {
+			type: [
+				{
+					documentType: {
+						type: String,
+						required: true
+					},
+
+					id: {
+						type: mongoose.Schema.Types.ObjectId,
+						required: true
+					},
+
+					recordedBy: {
+						type: mongoose.Schema.Types.ObjectId,
+						required: true,
+						ref: 'Officer'
+					},
+
+					recordedOn: {
+						type: Date,
+						required: true,
+						default: Date.now
+					}
+				}
+			]
 		}
 	},
 	{

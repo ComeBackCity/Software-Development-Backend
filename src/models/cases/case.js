@@ -14,6 +14,11 @@ const caseSchema = new mongoose.Schema(
 			required: true
 		},
 
+		topic: {
+			type: String,
+			required: true
+		},
+
 		assigned_officers: {
 			type: [
 				{
@@ -152,6 +157,65 @@ const caseSchema = new mongoose.Schema(
 			]
 		},
 
+		witness: {
+			type: [
+				{
+					name: {
+						type: String,
+						required: true
+					},
+
+					address: {
+						type: String,
+						required: true
+					},
+
+					phone_no: {
+						type: String,
+						required: true,
+						validate: {
+							validator: function (v) {
+								return /((0088)|(\+88))?[0-9]{11}/.test(v);
+							},
+
+							message: props => `${props.value} is invalid nid format`
+						}
+					},
+
+					nid: {
+						type: String,
+						required: true,
+						validate: {
+							validator: function (v) {
+								return /([0-9]{10})/.test(v);
+							},
+
+							message: props => `${props.value} is invalid nid format`
+						}
+					},
+
+					father_name: {
+						type: String,
+						required: true
+					},
+
+					witness_statement: {
+						type: String,
+						required: true
+					}
+				}
+			]
+		},
+
+		relationship_between_parties: {
+			type: String,
+			required: true
+		},
+
+		damage: {
+			type: Number
+		},
+
 		date: {
 			type: Date,
 			required: true,
@@ -176,11 +240,15 @@ const caseSchema = new mongoose.Schema(
 			required: true
 		},
 
-		documents: [
-			{
-				type: String
-			}
-		],
+		primary_documents: {
+			type: [String],
+			required: true
+		},
+
+		optional_documents: {
+			type: [String],
+			default: []
+		},
 
 		links: {
 			type: [

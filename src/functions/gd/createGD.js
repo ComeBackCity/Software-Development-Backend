@@ -15,17 +15,7 @@ const new_GD = async (req, res) => {
 	req.body.assigned_officers = officers;
 
 	await gdModel
-		.create({
-			topic: req.body.topic,
-			title: req.body.title,
-			description: req.body.description,
-			for: req.body.for,
-			against: req.body.against,
-			date: req.body.date,
-			thana: req.body.thana,
-			primary_documents: req.body.primary_documents,
-			optional_documents: req.body.optional_documents
-		})
+		.create(req.body)
 		.then(r => {
 			return res.status(status_codes.SUCCESS).json({
 				message: 'GD documented successfully'
