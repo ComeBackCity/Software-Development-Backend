@@ -3,9 +3,13 @@ const gdModel = require('../../models/gd/gd');
 const status_codes = require('../../utils/status_codes');
 
 const new_GD = async (req, res) => {
-	let officers = [];
+	let officers = [], officer;
 
-	for (let officer of req.body.assigned_officers) {
+	if (req.assigned_officers === undefined) {
+		req.assigned_officers = [];
+	}
+	for (let i = 0; i < req.assigned_officers.length; i++) {
+		officer = req.assigned_officers[i];
 		if (typeof officer.id === 'string') {
 			officer.id = mongoose.Types.ObjectId(officer.id);
 		}
