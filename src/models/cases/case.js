@@ -132,7 +132,6 @@ const caseSchema = new mongoose.Schema(
 
 					nid: {
 						type: String,
-						required: true,
 						validate: {
 							validator: function (v) {
 								return /([0-9]{10})/.test(v);
@@ -206,16 +205,21 @@ const caseSchema = new mongoose.Schema(
 						required: true
 					}
 				}
-			]
+			],
+
+			default: []
 		},
 
 		relationship_between_parties: {
-			type: String,
-			required: true
+			type: String
 		},
 
 		damage: {
 			type: Number
+		},
+
+		late_reason: {
+			type: String
 		},
 
 		date: {
