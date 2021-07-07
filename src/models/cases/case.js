@@ -46,7 +46,8 @@ const caseSchema = new mongoose.Schema(
 		status: {
 			type: String,
 			required: true,
-			enum: ['on hold', 'investigating', 'in court', 'closed']
+			enum: ['on hold', 'investigating', 'in court', 'closed'],
+			default: 'on hold'
 		},
 
 		for: {
