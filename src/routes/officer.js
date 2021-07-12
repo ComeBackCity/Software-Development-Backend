@@ -22,6 +22,7 @@ const searchTask = require('../functions/tasks/search');
 const taskByID = require('../functions/tasks/searchByID');
 const updateTask = require('../functions/tasks/update');
 const createHearing = require('../functions/hearing/create');
+const createVerdict = require('../functions/verdict/create');
 
 //routes
 router.post('/officer/login', login);
@@ -54,5 +55,8 @@ router.patch('/officer/tasks/update', updateTask);
 
 //hearing
 router.post('/officer/hearing/create', officer_auth, createHearing);
+
+//verdict
+router.post('/officer/hearing/create', officer_auth, createVerdict);
 
 module.exports = router;
