@@ -27,6 +27,8 @@ const createAppeal = require('../functions/appeal/create');
 const createAppealVerdict = require('../functions/appealVerdict/create');
 const createPresidentAppeal = require('../functions/presidentAppeal/create');
 const createPresidentAppealVerdict = require('../functions/presidentAppealVerdict/create');
+const createCS = require('../functions/chargeSheet/create');
+const createIR = require('../functions/investigationReport/create');
 
 //routes
 router.post('/officer/login', login);
@@ -56,6 +58,12 @@ router.post('/officer/tasks/create', createTask);
 router.get('/officer/tasks/search', searchTask);
 router.get('/officer/tasks/byID', taskByID);
 router.patch('/officer/tasks/update', updateTask);
+
+//charge sheet
+router.post('/officer/chargeSheet/create', officer_auth, createCS);
+
+//investigation report
+router.post('/officer/investigationReport/create', officer_auth, createIR);
 
 //hearing
 router.post('/officer/hearing/create', officer_auth, createHearing);
