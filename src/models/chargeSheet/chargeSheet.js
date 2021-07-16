@@ -32,28 +32,9 @@ const csSchema = mongoose.Schema({
 				required: true
 			},
 
-			phone_no: {
+			occupation: {
 				type: String,
-				required: true,
-				validate: {
-					validator: function (v) {
-						return /((0088)|(\+88))?[0-9]{11}/.test(v);
-					},
-
-					message: props => `${props.value} is invalid phone number format`
-				}
-			},
-
-			nid: {
-				type: String,
-				required: true,
-				validate: {
-					validator: function (v) {
-						return /([0-9]{10})/.test(v);
-					},
-
-					message: props => `${props.value} is invalid nid format`
-				}
+				required: true
 			}
 		},
 
@@ -113,33 +94,28 @@ const csSchema = mongoose.Schema({
 				address: {
 					type: String,
 					required: true
-				},
-
-				phone_no: {
-					type: String,
-					required: true,
-					validate: {
-						validator: function (v) {
-							return /((0088)|(\+88))?[0-9]{11}/.test(v);
-						},
-
-						message: props => `${props.value} is invalid phone number format`
-					}
-				},
-
-				nid: {
-					type: String,
-					required: true,
-					validate: {
-						validator: function (v) {
-							return /([0-9]{10})/.test(v);
-						},
-
-						message: props => `${props.value} is invalid nid format`
-					}
 				}
 			}
 		]
+	},
+
+	accused: {
+		name: {
+			type: String,
+			required: true
+		},
+
+		address: {
+			type: String,
+			required: true
+		},
+
+		status: {
+			type: String,
+			required: true,
+			default: 'unarrested',
+			enum: ['unarrested', 'arrested', 'fugitive']
+		}
 	},
 
 	accusation: {
