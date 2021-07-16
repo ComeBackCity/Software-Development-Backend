@@ -23,6 +23,10 @@ const taskByID = require('../functions/tasks/searchByID');
 const updateTask = require('../functions/tasks/update');
 const createHearing = require('../functions/hearing/create');
 const createVerdict = require('../functions/verdict/create');
+const createAppeal = require('../functions/appeal/create');
+const createAppealVerdict = require('../functions/appealVerdict/create');
+const createPresidentAppeal = require('../functions/presidentAppeal/create');
+const createPresidentAppealVerdict = require('../functions/presidentAppealVerdict/create');
 
 //routes
 router.post('/officer/login', login);
@@ -57,6 +61,14 @@ router.patch('/officer/tasks/update', updateTask);
 router.post('/officer/hearing/create', officer_auth, createHearing);
 
 //verdict
-router.post('/officer/hearing/create', officer_auth, createVerdict);
+router.post('/officer/verdict/create', officer_auth, createVerdict);
+
+//appeal
+router.post('/officer/appeal/create', officer_auth, createAppeal);
+router.post('/officer/appeal/verdict/create', officer_auth, createAppealVerdict);
+
+//president appeal
+router.post('/officer/presidentAppeal/create', officer_auth, createPresidentAppeal);
+router.post('/officer/presidentAppeal/verdict/create', officer_auth, createPresidentAppealVerdict);
 
 module.exports = router;
