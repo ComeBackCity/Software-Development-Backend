@@ -35,8 +35,8 @@ const appealVerdictSchema = mongoose.Schema({
 		required: true
 	},
 
-	document: {
-		type: String,
+	documents: {
+		type: [String],
 		required: true
 	}
 });
