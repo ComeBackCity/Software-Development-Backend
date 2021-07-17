@@ -29,6 +29,7 @@ const createPresidentAppeal = require('../functions/presidentAppeal/create');
 const createPresidentAppealVerdict = require('../functions/presidentAppealVerdict/create');
 const createCS = require('../functions/chargeSheet/create');
 const createIR = require('../functions/investigationReport/create');
+const createResolve = require('../functions/resolve/create');
 
 //routes
 router.post('/officer/login', login);
@@ -78,5 +79,8 @@ router.post('/officer/appeal/verdict/create', officer_auth, createAppealVerdict)
 //president appeal
 router.post('/officer/presidentAppeal/create', officer_auth, createPresidentAppeal);
 router.post('/officer/presidentAppeal/verdict/create', officer_auth, createPresidentAppealVerdict);
+
+//resolve
+router.post('/officer/resolve/create', officer_auth, createResolve);
 
 module.exports = router;
