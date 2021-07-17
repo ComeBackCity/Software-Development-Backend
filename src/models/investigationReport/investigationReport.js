@@ -21,41 +21,24 @@ const irSchema = mongoose.Schema({
 	},
 
 	info_provider: {
-		type: {
-			name: {
-				type: String,
-				required: true
-			},
+		type: [
+			{
+				name: {
+					type: String,
+					required: true
+				},
 
-			address: {
-				type: String,
-				required: true
-			},
+				address: {
+					type: String,
+					required: true
+				},
 
-			phone_no: {
-				type: String,
-				required: true,
-				validate: {
-					validator: function (v) {
-						return /((0088)|(\+88))?[0-9]{11}/.test(v);
-					},
-
-					message: props => `${props.value} is invalid phone number format`
-				}
-			},
-
-			nid: {
-				type: String,
-				required: true,
-				validate: {
-					validator: function (v) {
-						return /([0-9]{10})/.test(v);
-					},
-
-					message: props => `${props.value} is invalid nid format`
+				occupation: {
+					type: String,
+					required: true
 				}
 			}
-		},
+		],
 
 		required: true
 	},
@@ -113,30 +96,6 @@ const irSchema = mongoose.Schema({
 				address: {
 					type: String,
 					required: true
-				},
-
-				phone_no: {
-					type: String,
-					required: true,
-					validate: {
-						validator: function (v) {
-							return /((0088)|(\+88))?[0-9]{11}/.test(v);
-						},
-
-						message: props => `${props.value} is invalid phone number format`
-					}
-				},
-
-				nid: {
-					type: String,
-					required: true,
-					validate: {
-						validator: function (v) {
-							return /([0-9]{10})/.test(v);
-						},
-
-						message: props => `${props.value} is invalid nid format`
-					}
 				}
 			}
 		]
