@@ -67,6 +67,11 @@ const verdictSchema = mongoose.Schema({
 				}
 			}
 		]
+	},
+
+	primary_documents: {
+		type: [String],
+		required: true
 	}
 });
 
