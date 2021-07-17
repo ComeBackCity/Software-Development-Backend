@@ -1,4 +1,4 @@
-const verdictModel = require('../../models/hearing/hearing');
+const verdictModel = require('../../models/verdict/verdict');
 const status_codes = require('../../utils/status_codes');
 
 const createVerdict = async (req, res) => {
