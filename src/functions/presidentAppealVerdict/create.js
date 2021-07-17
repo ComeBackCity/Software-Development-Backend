@@ -1,4 +1,4 @@
-const presidentAppealVerdictModel = require('../../models/appeal/appeal');
+const presidentAppealVerdictModel = require('../../models/presidentAppealVerdict/presidentAppealVerdict');
 const status_codes = require('../../utils/status_codes');
 
 const createPresidentAppealVerdict = async (req, res) => {
