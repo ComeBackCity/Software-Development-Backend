@@ -21,22 +21,24 @@ const csSchema = mongoose.Schema({
 	},
 
 	info_provider: {
-		type: {
-			name: {
-				type: String,
-				required: true
-			},
+		type: [
+			{
+				name: {
+					type: String,
+					required: true
+				},
 
-			address: {
-				type: String,
-				required: true
-			},
+				address: {
+					type: String,
+					required: true
+				},
 
-			occupation: {
-				type: String,
-				required: true
+				occupation: {
+					type: String,
+					required: true
+				}
 			}
-		},
+		],
 
 		required: true
 	},
@@ -100,22 +102,35 @@ const csSchema = mongoose.Schema({
 	},
 
 	accused: {
-		name: {
-			type: String,
-			required: true
-		},
+		type: [
+			{
+				name: {
+					type: String,
+					required: true
+				},
 
-		address: {
-			type: String,
-			required: true
-		},
+				address: {
+					type: String,
+					required: true
+				},
 
-		status: {
-			type: String,
-			required: true,
-			default: 'unarrested',
-			enum: ['unarrested', 'arrested', 'fugitive']
-		}
+				status: {
+					type: String,
+					required: true,
+					default: 'not_arrested',
+					enum: ['not_arrested', 'arrested', 'absconding']
+				},
+
+				afterArrestState: {
+					type: String,
+					enum: ['under_supervision', 'bail', 'undertaking']
+				},
+
+				supervisor: {
+					type: String
+				}
+			}
+		]
 	},
 
 	accusation: {
