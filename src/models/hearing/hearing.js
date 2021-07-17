@@ -18,6 +18,11 @@ const hearingSchema = new mongoose.Schema({
 	description: {
 		type: String,
 		required: true
+	},
+
+	primary_documents: {
+		type: [String],
+		required: true
 	}
 });
 
