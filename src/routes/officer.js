@@ -23,14 +23,23 @@ const searchTask = require('../functions/tasks/search');
 const taskByID = require('../functions/tasks/searchByID');
 const updateTask = require('../functions/tasks/update');
 const createHearing = require('../functions/hearing/create');
+const hearingByID = require('../functions/hearing/searchByID');
 const createVerdict = require('../functions/verdict/create');
+const verdictByID = require('../functions/verdict/searchByID');
 const createAppeal = require('../functions/appeal/create');
+const appealByID = require('../functions/appeal/searchByID');
 const createAppealVerdict = require('../functions/appealVerdict/create');
+const appealVerdictByID = require('../functions/appealVerdict/searchByID');
 const createPresidentAppeal = require('../functions/presidentAppeal/create');
+const presidentAppealByID = require('../functions/presidentAppeal/searchByID');
 const createPresidentAppealVerdict = require('../functions/presidentAppealVerdict/create');
+const presidentAppealVerdictByID = require('../functions/presidentAppealVerdict/searchByID');
 const createCS = require('../functions/chargeSheet/create');
+const csByID = require('../functions/chargeSheet/searchByID');
 const createIR = require('../functions/investigationReport/create');
+const irByID = require('../functions/investigationReport/searchByID');
 const createResolve = require('../functions/resolve/create');
+const resolveByID = require('../functions/resolve/searchByID');
 
 //routes
 router.post('/officer/login', login);
@@ -64,25 +73,34 @@ router.patch('/officer/tasks/update', updateTask);
 
 //charge sheet
 router.post('/officer/chargeSheet/create', officer_auth, createCS);
+router.get('/officer/chargeSheet/byID', officer_auth, csByID);
 
 //investigation report
 router.post('/officer/investigationReport/create', officer_auth, createIR);
+router.get('/officer/investigationReport/byID', officer_auth, irByID);
 
 //hearing
 router.post('/officer/hearing/create', officer_auth, createHearing);
+router.get('/officer/hearing/byID', officer_auth, hearingByID);
 
 //verdict
 router.post('/officer/verdict/create', officer_auth, createVerdict);
+router.get('/officer/verdict/byID', officer_auth, verdictByID);
 
 //appeal
 router.post('/officer/appeal/create', officer_auth, createAppeal);
+router.get('/officer/appeal/byID', officer_auth, appealByID);
 router.post('/officer/appeal/verdict/create', officer_auth, createAppealVerdict);
+router.get('/officer/appeal/verdict/byID', officer_auth, appealVerdictByID);
 
 //president appeal
 router.post('/officer/presidentAppeal/create', officer_auth, createPresidentAppeal);
+router.get('/officer/presidentAppeal/byID', officer_auth, presidentAppealByID);
 router.post('/officer/presidentAppeal/verdict/create', officer_auth, createPresidentAppealVerdict);
+router.get('/officer/presidentAppeal/verdict/byID', officer_auth, presidentAppealVerdictByID);
 
 //resolve
 router.post('/officer/resolve/create', officer_auth, createResolve);
+router.get('/officer/resolve/byID', officer_auth, resolveByID);
 
 module.exports = router;
