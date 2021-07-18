@@ -6,6 +6,7 @@ const createCS = async (req, res) => {
 		.create(req.body)
 		.then(r => {
 			return res.status(status_codes.SUCCESS).json({
+				id: r._id,
 				message: 'Successfully documented investigation report'
 			});
 		})
