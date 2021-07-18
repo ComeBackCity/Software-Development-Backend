@@ -3,6 +3,12 @@ const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 
 const verdictSchema = mongoose.Schema({
+	case: {
+		type: Schema.Types.ObjectId,
+		required: true,
+		ref: 'Case'
+	},
+
 	verdict_no: {
 		type: String,
 		required: true

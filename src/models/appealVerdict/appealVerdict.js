@@ -9,6 +9,11 @@ const appealVerdictSchema = mongoose.Schema({
 		ref: 'Case'
 	},
 
+	appeal_no: {
+		type: String,
+		required: true
+	},
+
 	date: {
 		type: Date,
 		required: true,
