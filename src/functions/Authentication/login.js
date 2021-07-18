@@ -21,7 +21,7 @@ const login = async (req, res) => {
 		{
 			user_nid: user.nid
 		},
-		function(error) {
+		function (error) {
 			if (error) {
 				return res.status(status_codes.INTERNAL_SERVER_ERROR).json('Something went wrong');
 			}

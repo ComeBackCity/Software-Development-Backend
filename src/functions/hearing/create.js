@@ -3,11 +3,7 @@ const status_codes = require('../../utils/status_codes');
 
 const createHearing = async (req, res) => {
 	hearingModel
-		.create({
-			case: req.body.case,
-			date: req.body.date,
-			description: req.body.description
-		})
+		.create(req.body)
 		.then(r => {
 			return res.status(status_codes.SUCCESS).json({
 				id: r._id,
