@@ -68,7 +68,7 @@ const caseSchema = new mongoose.Schema(
 						type: String,
 						required: true,
 						validate: {
-							validator: function (v) {
+							validator: function(v) {
 								return /((0088)|(\+88))?[0-9]{11}/.test(v);
 							},
 
@@ -80,7 +80,7 @@ const caseSchema = new mongoose.Schema(
 						type: String,
 						required: true,
 						validate: {
-							validator: function (v) {
+							validator: function(v) {
 								return /([0-9]{10})/.test(v);
 							},
 
@@ -122,7 +122,7 @@ const caseSchema = new mongoose.Schema(
 						type: String,
 						required: true,
 						validate: {
-							validator: function (v) {
+							validator: function(v) {
 								return /((0088)|(\+88))?[0-9]{11}/.test(v);
 							},
 
@@ -133,7 +133,7 @@ const caseSchema = new mongoose.Schema(
 					nid: {
 						type: String,
 						validate: {
-							validator: function (v) {
+							validator: function(v) {
 								return /([0-9]{10})/.test(v);
 							},
 
@@ -175,7 +175,7 @@ const caseSchema = new mongoose.Schema(
 						type: String,
 						required: true,
 						validate: {
-							validator: function (v) {
+							validator: function(v) {
 								return /((0088)|(\+88))?[0-9]{11}/.test(v);
 							},
 
@@ -187,7 +187,7 @@ const caseSchema = new mongoose.Schema(
 						type: String,
 						required: true,
 						validate: {
-							validator: function (v) {
+							validator: function(v) {
 								return /([0-9]{10})/.test(v);
 							},
 

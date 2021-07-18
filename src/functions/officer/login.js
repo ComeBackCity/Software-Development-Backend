@@ -23,7 +23,7 @@ const login = async (req, res) => {
 		{
 			officer_id: officer._id
 		},
-		function (error) {
+		function(error) {
 			if (error) {
 				return res.status(status_codes.INTERNAL_SERVER_ERROR).json({
 					error: 'Something went wrong'
