@@ -3,8 +3,7 @@ const thanaModel = require('../../models/misc/thana');
 const status_codes = require('../../utils/status_codes');
 
 const gdCountPerDivision = async (req, res) => {
-	let thanaIDs = [],
-		gds = [];
+	let thanaIDs = [];
 
 	await thanaModel
 		.find({
