@@ -23,6 +23,13 @@ const gdCountPerDivision = async (req, res) => {
 	await gdModel
 		.aggregate([
 			{
+				$match: {
+					thana: {
+						$in: thanaIDs
+					}
+				}
+			},
+			{
 				$group: {
 					_id: '$topic',
 					count: {
