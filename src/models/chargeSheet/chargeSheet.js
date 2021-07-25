@@ -96,6 +96,11 @@ const csSchema = mongoose.Schema({
 				address: {
 					type: String,
 					required: true
+				},
+
+				testimony: {
+					type: String,
+					required: true
 				}
 			}
 		]
