@@ -4,6 +4,8 @@ const { Schema } = require('mongoose');
 
 const caseSchema = new mongoose.Schema(
 	{
+		_id: String,
+
 		subject: {
 			type: String,
 			required: true

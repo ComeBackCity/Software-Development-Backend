@@ -4,6 +4,8 @@ const { Schema } = require('mongoose');
 
 const gdSchema = new mongoose.Schema(
 	{
+		_id: String,
+
 		topic: {
 			type: String,
 			required: true
@@ -203,7 +205,8 @@ const gdSchema = new mongoose.Schema(
 	{
 		toJSON: {
 			virtuals: true
-		}
+		},
+		_id: false
 	}
 );
 
