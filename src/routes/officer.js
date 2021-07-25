@@ -40,6 +40,8 @@ const createIR = require('../functions/investigationReport/create');
 const irByID = require('../functions/investigationReport/searchByID');
 const createResolve = require('../functions/resolve/create');
 const resolveByID = require('../functions/resolve/searchByID');
+const createCourt = require('../functions/courtInfo/create');
+const courtByID = require('../functions/courtInfo/searchByID');
 const gdCountPerDivision = require('../functions/visualize/gdCountPerDivision');
 
 //routes
@@ -103,6 +105,10 @@ router.get('/officer/presidentAppeal/verdict/byID', officer_auth, presidentAppea
 //resolve
 router.post('/officer/resolve/create', officer_auth, createResolve);
 router.get('/officer/resolve/byID', officer_auth, resolveByID);
+
+//court
+router.post('/officer/court/create', officer_auth, createCourt);
+router.get('/officer/court/byID', officer_auth, courtByID);
 
 //visualize
 router.get('/officer/visualize/gd/perDivision', officer_auth, gdCountPerDivision);
