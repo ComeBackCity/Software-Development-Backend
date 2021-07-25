@@ -131,6 +131,11 @@ const irSchema = mongoose.Schema({
 		required: true
 	},
 
+	optional_images: {
+		type: [String],
+		default: []
+	},
+
 	optional_documents: {
 		type: [String],
 		default: []
