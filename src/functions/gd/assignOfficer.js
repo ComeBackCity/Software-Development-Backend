@@ -2,7 +2,7 @@ const gdModel = require('../../models/gd/gd');
 const status_codes = require('../../utils/status_codes');
 
 const assignOfficer = async (req, res) => {
-	if (req.officer.rank !== 'Officer in Charge') {
+	if (req.officer.rank !== 'অফিসার ইন চার্জ') {
 		return res.status(status_codes.UNAUTHORIZED).json({
 			message: 'You do not have permission to perform this action'
 		});
