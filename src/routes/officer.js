@@ -2,6 +2,7 @@ const express = require('express');
 const router = new express.Router();
 
 const login = require('../functions/officer/login');
+const logout = require('../functions/officer/logout');
 const new_officer = require('../functions/officer/new_officer');
 const getOfficersList = require('../functions/officer/officerList');
 const new_gd = require('../functions/gd/createGD');
@@ -48,6 +49,7 @@ const gdCountPerDivision = require('../functions/visualize/gdCountPerDivision');
 router.post('/officer/login', login);
 router.post('/officer/new', new_officer);
 router.post('/officer/get/all', officer_auth, getOfficersList);
+router.post('/officer/logout', logout);
 
 //gd
 router.post('/officer/gd/create', officer_auth, new_gd);

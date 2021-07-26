@@ -10,7 +10,7 @@ const generateToken = payload => {
 };
 
 const verifyToken = (token, cb) => {
-	jwt.verify(token, process.env.SECRET_KEY, cb);
+	return jwt.verify(token, process.env.SECRET_KEY, cb);
 };
 
 module.exports = {
