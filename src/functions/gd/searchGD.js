@@ -4,7 +4,7 @@ const status_codes = require('../../utils/status_codes');
 const searchGD = async (req, res) => {
 	let queryPayload = {};
 
-	if (req.officer.rank === 'Officer in Charge') {
+	if (req.officer.rank === 'অফিসার ইন চার্জ') {
 		if (req.query.assigned_officers) {
 			queryPayload['assigned_officers.id'] = {
 				$in: req.query.assigned_officers
