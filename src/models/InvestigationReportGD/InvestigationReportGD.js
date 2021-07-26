@@ -142,6 +142,6 @@ const irGDSchema = mongoose.Schema({
 	}
 });
 
-const investigationReportGD = database.model('Investigation Report', irGDSchema);
+const investigationReportGD = database.model('Investigation Report GD', irGDSchema);
 
 module.exports = investigationReportGD;
