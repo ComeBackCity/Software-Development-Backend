@@ -41,6 +41,10 @@ const searchCase = async (req, res) => {
 		queryPayload.type = req.query.type;
 	}
 
+	if (req.query.topic) {
+		queryPayload.topic = req.query.topic;
+	}
+
 	if (req.query.status) {
 		queryPayload.status = {
 			$in: req.query.status

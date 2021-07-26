@@ -13,8 +13,7 @@ const caseSchema = new mongoose.Schema(
 
 		type: {
 			type: String,
-			required: true,
-			default: 'dewani'
+			required: true
 		},
 
 		topic: {
@@ -48,9 +47,7 @@ const caseSchema = new mongoose.Schema(
 
 		status: {
 			type: String,
-			required: true,
-			enum: ['on hold', 'investigating', 'in court', 'closed'],
-			default: 'on hold'
+			required: true
 		},
 
 		for: {
