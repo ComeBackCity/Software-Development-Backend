@@ -40,6 +40,8 @@ const createCS = require('../functions/chargeSheet/create');
 const csByID = require('../functions/chargeSheet/searchByID');
 const createIR = require('../functions/investigationReport/create');
 const irByID = require('../functions/investigationReport/searchByID');
+const createIRGD = require('../functions/investigationReportGD/create');
+const irGDByID = require('../functions/investigationReportGD/searchByID');
 const createResolve = require('../functions/resolve/create');
 const resolveByID = require('../functions/resolve/searchByID');
 const createCourt = require('../functions/courtInfo/create');
@@ -85,6 +87,10 @@ router.get('/officer/chargeSheet/byID', officer_auth, csByID);
 //investigation report
 router.post('/officer/investigationReport/create', officer_auth, createIR);
 router.get('/officer/investigationReport/byID', officer_auth, irByID);
+
+//investigation report
+router.post('/officer/investigationReportGD/create', officer_auth, createIRGD);
+router.get('/officer/investigationReportGD/byID', officer_auth, irGDByID);
 
 //hearing
 router.post('/officer/hearing/create', officer_auth, createHearing);
