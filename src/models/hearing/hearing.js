@@ -4,7 +4,7 @@ const { Schema } = require('mongoose');
 
 const hearingSchema = new mongoose.Schema({
 	case: {
-		type: Schema.Types.ObjectId,
+		type: String,
 		required: true,
 		ref: 'Case'
 	},

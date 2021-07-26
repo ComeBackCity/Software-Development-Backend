@@ -4,7 +4,7 @@ const { Schema } = require('mongoose');
 
 const verdictSchema = mongoose.Schema({
 	case: {
-		type: Schema.Types.ObjectId,
+		type: String,
 		required: true,
 		ref: 'Case'
 	},
