@@ -27,6 +27,16 @@ const searchGD = async (req, res) => {
 		};
 	}
 
+	if (req.query._id) {
+		queryPayload._id = req.query._id;
+	}
+
+	if (req.query.for) {
+		queryPayload['for.name'] = {
+			$in: req.query.for
+		};
+	}
+
 	if (req.query.topic) {
 		queryPayload.topic = req.query.topic;
 	}
