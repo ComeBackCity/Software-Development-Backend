@@ -18,7 +18,7 @@ const officer = database.model('Officer', {
 		type: String,
 		required: true,
 		trim: true,
-		enum: ['Officer in Charge', 'Sub-Inspector', 'Assistant Sub-Inspector', 'Constable']
+		enum: ['অফিসার ইন চার্জ', 'সাব ইন্সপেক্টর', 'এসিট্যান্ট সাব ইন্সপেক্টর', 'কনস্টেবল']
 	},
 
 	thana: {
