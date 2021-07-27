@@ -48,6 +48,7 @@ const createCourt = require('../functions/courtInfo/create');
 const courtByID = require('../functions/courtInfo/searchByID');
 const gdCountPerDivision = require('../functions/visualize/gdCountPerDivision');
 const crimeCountAll = require('../functions/visualize/crimeCountAll');
+const crimeCountAllPerDivision = require('../functions/visualize/crimeCountDistrictAll');
 
 //routes
 router.post('/officer/login', login);
@@ -124,5 +125,6 @@ router.get('/officer/court/byID', officer_auth, courtByID);
 //visualize
 router.get('/officer/visualize/gd/perDivision', officer_auth, gdCountPerDivision);
 router.get('/officer/visualize/crime/all', officer_auth, crimeCountAll);
+router.get('/officer/visualize/crime/perDivision', officer_auth, crimeCountAllPerDivision);
 
 module.exports = router;
