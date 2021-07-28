@@ -4,7 +4,8 @@ const status_codes = require('../../utils/status_codes');
 
 const masterQuery = async (req, res) => {
 	let divisions = [],
-		districts = [];
+		districts = [],
+		thanas = [];
 
 	await thanaModel
 		.find()
@@ -28,8 +29,25 @@ const masterQuery = async (req, res) => {
 			districts = r;
 		});
 
+	await thanaModel
+		.aggregate([
+			{
+				$group: {
+					_id: {
+						division: '$division',
+						district: '$district',
+						thana: '$thana'
+					}
+				}
+			}
+		])
+		.then(r => {
+			thanas = r;
+		});
+
 	let data01 = [],
-		data02 = [];
+		data02 = [],
+		data03 = [];
 
 	for (const division of divisions) {
 		await caseModel
@@ -124,8 +142,56 @@ const masterQuery = async (req, res) => {
 			});
 	}
 
+	for (const thana of thanas) {
+		await caseModel
+			.aggregate([
+				{
+					$lookup: {
+						from: 'thanas',
+						localField: 'thana',
+						foreignField: '_id',
+						as: 'thana'
+					}
+				},
+				{
+					$unwind: '$thana'
+				},
+				{
+					$match: {
+						'thana.thana': thana._id.thana
+					}
+				},
+				{
+					$group: {
+						_id: '$topic',
+						count: {
+							$sum: 1
+						}
+					}
+				}
+			])
+			.then(r => {
+				let total = 0;
+				r.map(item => {
+					total += item.count;
+				});
+				data03.push({
+					division: thana._id.division,
+					district: thana._id.district,
+					thana: thana._id.thana,
+					total_crime_count: total,
+					crime_wise: r
+				});
+			})
+			.catch(err => {
+				return res.status(status_codes.DATA_NOT_FOUND).json({
+					error: err.message
+				});
+			});
+	}
+
 	try {
-		return res.status(status_codes.SUCCESS).json({ data01, data02 });
+		return res.status(status_codes.SUCCESS).json({ data01, data02, data03 });
 	} catch (e) {
 		return res.status(status_codes.DATA_NOT_FOUND).json({
 			error: e.message
