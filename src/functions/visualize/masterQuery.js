@@ -14,8 +14,16 @@ const masterQuery = async (req, res) => {
 		});
 
 	await thanaModel
-		.find()
-		.distinct('district')
+		.aggregate([
+			{
+				$group: {
+					_id: {
+						division: '$division',
+						district: '$district'
+					}
+				}
+			}
+		])
 		.then(r => {
 			districts = r;
 		});
@@ -85,7 +93,7 @@ const masterQuery = async (req, res) => {
 				},
 				{
 					$match: {
-						'thana.district': district
+						'thana.district': district._id.district
 					}
 				},
 				{
@@ -103,7 +111,8 @@ const masterQuery = async (req, res) => {
 					total += item.count;
 				});
 				data02.push({
-					district,
+					division: district._id.division,
+					district: district._id.district,
 					total_crime_count: total,
 					crime_wise: r
 				});
